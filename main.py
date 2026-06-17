@@ -15,8 +15,6 @@ cycle_time: float | int = 0.1 # Time in seconds between checking if an ad is pla
 if not application_path:
     application_path = "C:Users" / Path(getuser()) / "AppData/Roaming/Spotify/Spotify.exe"
 
-print(application_path)
-
 def main() -> None:
     """Runs the main program"""
     hwnd = FindWindow(None, window_name)
