@@ -5,7 +5,6 @@ from subprocess import Popen
 from time import sleep
 from pathlib import Path
 from pyautogui import press
-from pygetwindow import getWindowsWithTitle, getActiveWindowTitle
 from getpass import getuser
 
 window_name: str = "Spotify Free" # Name of application
@@ -25,7 +24,6 @@ def main() -> None:
         while True:
             window_text = GetWindowText(hwnd)
             if not " - " in window_text and not window_name in window_text:
-                prev_window = getActiveWindowTitle()
                 SendMessage(hwnd, WM_CLOSE, 0, 0)
                 sleep(0.1)
                 Popen(application_path)
@@ -33,7 +31,7 @@ def main() -> None:
                     sleep(0.1)
                 sleep(2)
                 press("playpause")
-                getWindowsWithTitle(prev_window)[0].activate()
+                print("Ad Skipped.")
 
             sleep(cycle_time)
 
