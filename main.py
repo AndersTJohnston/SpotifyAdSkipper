@@ -13,7 +13,7 @@ application_path: Path | None = None # Path to the exe of your application, none
 cycle_time: float | int = 0.1 # Time in seconds between checking if an ad is playing. Increase to reduce effect on cpu
 
 if not application_path:
-    application_path = "C:Users" / Path(getuser()) / "AppData/Roaming/Spotify/Spotify.exe"
+    application_path = Path("C:Users") / getuser() / "AppData/Roaming/Spotify/Spotify.exe"
 
 def main() -> None:
     """Runs the main program"""
