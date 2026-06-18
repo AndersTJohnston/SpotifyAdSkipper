@@ -30,9 +30,9 @@ def main() -> None:
                 while FindWindow(None, window_name) == 0:
                     sleep(0.1)
                 sleep(1.2)
+                hwnd = FindWindow(None, window_name)
                 press("playpause")
                 print("Ad Skipped.")
-                hwnd = FindWindow(None, window_name)
 
             sleep(cycle_time)
 
