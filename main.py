@@ -30,7 +30,7 @@ def main() -> None:
                 Popen(application_path) # Open the new window
                 hwnd = FindWindow(None, window_name)  # Get hwnd tag of the newly opened window
                 SetWindowPos(hwnd, HWND_BOTTOM, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE)  # Move window to the background
-                sleep(1.5) # Give window time to set itself up
+                sleep(wait_after_open) # Give window time to set itself up
                 press("playpause") # Start music
                 print("Ad Skipped.")
 
