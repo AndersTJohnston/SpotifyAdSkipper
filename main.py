@@ -8,9 +8,9 @@ from pyautogui import press
 from getpass import getuser
 
 window_name: str = "Spotify Free" # Name of application
-application_path: Path | None = None # Path to the exe of your application, none to use default
+application_path: Path | None = None # Path to the exe of your application(replace None with Path(<your-path-here>)), none to use default.
 cycle_time: float | int = 0.1 # Time in seconds between checking if an ad is playing. Increase to reduce effect on cpu
-wait_after_open: float | int = 1.5 # Time in seconds to wait after opening the window to playing the music; lower numbers may not work but will be faster
+wait_after_open: float | int = 2 # Time in seconds to wait after opening the window to playing the music; lower numbers may not work but will be faster
 
 if not application_path: # Set default path
     application_path = Path("C:/Users") / getuser() / "AppData/Roaming/Spotify/Spotify.exe"
@@ -26,11 +26,10 @@ def main() -> None:
             window_text = GetWindowText(hwnd) # Get the text of the window
             if not " - " in window_text and not window_name in window_text:
                 SendMessage(hwnd, WM_CLOSE, 0, 0) # Close the application
-                sleep(0.1)
                 Popen(application_path) # Open the new window
+                sleep(wait_after_open) # Give window time to set itself up
                 hwnd = FindWindow(None, window_name)  # Get hwnd tag of the newly opened window
                 SetWindowPos(hwnd, HWND_BOTTOM, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE)  # Move window to the background
-                sleep(wait_after_open) # Give window time to set itself up
                 press("playpause") # Start music
                 print("Ad Skipped.")
 
