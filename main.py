@@ -27,11 +27,12 @@ def main() -> None:
                 SendMessage(hwnd, WM_CLOSE, 0, 0)
                 sleep(0.1)
                 Popen(application_path)
-                while not window_text:
+                while FindWindow(None, window_name) == 0:
                     sleep(0.1)
-                sleep(2)
+                sleep(1.2)
                 press("playpause")
                 print("Ad Skipped.")
+                hwnd = FindWindow(None, window_name)
 
             sleep(cycle_time)
 
