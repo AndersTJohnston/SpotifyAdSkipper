@@ -19,7 +19,7 @@ def main() -> None:
     """Runs the main program"""
     hwnd = FindWindow(None, window_name) # Find the window's hwnd for the first time
     if hwnd == 0:
-        print(f"\"{window_name}\" is not currently open or does not exist.")
+        print(f"\"{window_name}\" is not currently open or does not exist. If \"{window_name}\" is open, make sure music is not playing.")
     else:
         print("Skipping ads.")
         while True:
